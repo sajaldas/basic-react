@@ -14,8 +14,49 @@ footer {
 }
 
 .loginbg{height: 100vh;}
-.form-signin { padding: 30px; box-shadow: 0px 0px 10px 0px #333; border-radius: 10px; margin-top: 15vh;}
+.app-container { height: 88vh; }
 
+.form-signin, .form-signup, .form-confirm-signup { padding: 30px; box-shadow: 0px 0px 10px 0px #333; border-radius: 10px; margin-top: 15vh;}
+form .err span {
+  color: #f00;
+  margin-bottom: 10px;
+  display: block;
+}
+
+header .navbar .nav-item a.nav-link {
+  color: #fff !important;
+}
+#userMenuItems{max-width: 15%;}
+
+.clink{color:#fff !important;}
+
+.report {padding-top: 88px;}
+.report .paging { padding-top: 20px; }
+/* Table css */
+.report table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.report table td, .report table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.report table tr:nth-child(even){background-color: #f2f2f2;}
+
+.report table tr:hover {background-color: #ddd;}
+
+.report table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000;
+  color: white;
+}
+/* table css ends */
 
 @keyframes App-logo-spin {
   from {

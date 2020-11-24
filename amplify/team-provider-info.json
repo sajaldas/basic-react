@@ -10,6 +10,11 @@
             "StackName": "amplify-basicreact-dev-194746",
             "StackId": "arn:aws:cloudformation:ap-south-1:434891280252:stack/amplify-basicreact-dev-194746/c3f9ae50-dd6f-11ea-82c1-063f7331dcfe",
             "AmplifyAppId": "d1dezydp3c19wd"
+        },
+        "categories": {
+            "auth": {
+                "basicreact5207677b": {}
+            }
         }
     }
 }
