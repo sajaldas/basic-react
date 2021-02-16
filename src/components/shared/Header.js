@@ -65,7 +65,7 @@ class Header extends Component {
                                 </li>
                                 {}
                                 <li className="nav-item">
-                                    <a className="nav-link" href=":;">Pricing</a>
+                                    <NavLink to="/chart" activeClassName="active" className="nav-link">Chart</NavLink>
                                 </li>
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href=":;" data-toggle="dropdown"

@@ -76,15 +76,15 @@ const Table = ({
         const [keyword, setkeyword] = React.useState('')
         const customUserFilter = (key) => {
             //console.log('filter text = ', key);
-            console.log('customUserFilter called ----');
+            //console.log('customUserFilter called ----');
             setkeyword(key)
             customFilter({key, pageSize})
             gotoPage(0)
         }
 
         React.useEffect(() => {
-            console.log('table useEffect called');
-            console.log('pageIndex = ', pageIndex);
+            // console.log('table useEffect called');
+            // console.log('pageIndex = ', pageIndex);
             
             //console.log('keyword = ', keyword, ', customPageIndex = ', customPageIndex)
             if(keyword === '')
@@ -184,6 +184,8 @@ const Table = ({
                 </ul>
                 <div className="clearfix"></div>
             </nav>
+
+            <div className="text-left"><strong>*note:</strong> The table data is random and fetched from a free API - https://my.api.mockaroo.com/users.json?key=652173a0</div>
              </>
         )
 }
