@@ -95,7 +95,7 @@ class Chart extends Component {
         return (
             <>
                 <section className="report">
-                    <h2>Railfall Chart</h2><br/><br/>
+                    <h2>Rainfall Chart</h2><br/><br/>
                     <LineChart
                         width={500}
                         height={300}
