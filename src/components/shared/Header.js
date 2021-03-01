@@ -36,7 +36,9 @@ class Header extends Component {
         try {
             await Auth.signOut({ global: true });
             this.setState({ isLoggedIn: false })
+            console.log('state = ', this.state)
             this.props.actions.logoutSuccess();
+            console.log('state = ', this.state)
             this.props.history.push("/signin");
         } catch (error) {
             console.log('error signing out: ', error);
