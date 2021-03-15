@@ -32,8 +32,7 @@ class SignUp extends Component {
         //console.log('elemId = ', elemId, ', value = ', e.target.value);
 
         if(e.target.value != null)
-        {
-            console.log('validationErr = ', validationErr);
+        {            
             validationErr[elemId] = ''
         }
 
@@ -78,8 +77,7 @@ class SignUp extends Component {
         return formIsValid
     }
 
-    handleFormSubmit = () => {
-        
+    handleFormSubmit = () => {        
         const { first_name, last_name, user_email, user_pass, signedUp, confirmationCode } = this.state
         //console.log('email = ', user_email, ', password = ', user_pass);
         //console.log('err = ', this.state.validationErr);
@@ -98,7 +96,7 @@ class SignUp extends Component {
                     }
                 })
                     .then((data) => {
-                        console.log('data = ', data);
+                        //console.log('data = ', data);
                         if (data.codeDeliveryDetails)
                             this.setState({ signedUp: true });
                     })
@@ -111,7 +109,7 @@ class SignUp extends Component {
                         }
                     });
             }
-            else {
+            else {                
                 Auth.confirmSignUp(user_email, confirmationCode)
                     .then(() => {
                         console.log('signup success')
@@ -152,7 +150,7 @@ class SignUp extends Component {
                                 <label htmlFor="confirmationCode" className="sr-only">Confirmation Code</label>
                                 <input type="text" id="confirmationCode" className="form-control mb-3" placeholder="Confirmation Code" onChange={this.handleChange} />
 
-                                <button className="btn btn-lg btn-primary btn-block" type="button" onClick={this.handleFormSubmit()}>Sign Up</button>
+                                <button className="btn btn-lg btn-primary btn-block" type="button" onClick={() => this.handleFormSubmit()}>Sign Up</button>
                                 {/*  */}
                             </form>
                         </div>
