@@ -8,9 +8,7 @@ import { Provider } from 'react-redux'
 import Amplify from 'aws-amplify'
 import awsconfig from './aws-exports'
 
-import Header from './components/shared/Header';
 //import Navigation from './components/shared/Navigation'
-import Footer from './components/shared/Footer';
 import Container from './components/shared/Container';
 
 const store = configureStore()
@@ -23,10 +21,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="App">
-          <Header />
+        <div className="App">          
           <Container />
-          <Footer />
         </div>
       </Router>
     </Provider>

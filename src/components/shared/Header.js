@@ -4,50 +4,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 //import { hashHistory } from 'react-router;'
 import { Auth } from 'aws-amplify';
-
 import { logoutSuccess } from '../../redux/actions/user-actions'
 
 class Header extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            user: null,
-            isLoggedIn: false
-        }
-        this.authListener()
-    }
-
-    authListener = async () => {
-        try {
-            //const response = await Auth.currentSession();
-            console.log('called');
-            const user = await Auth.currentAuthenticatedUser();
-            this.setState({ user: user, isLoggedIn: true })
-        } catch (err) {
-            console.log(err);
-            //this.props.history.push("/signin");
-        }
-    }
-
-    handleLogout = async () => {
-        console.log('logout called');
-
-        try {
-            await Auth.signOut({ global: true });
-            this.setState({ isLoggedIn: false })
-            console.log('state = ', this.state)
-            this.props.actions.logoutSuccess();
-            console.log('state = ', this.state)
-            this.props.history.push("/signin");
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
     }
 
     render() {
-        console.log('is logged in = ', this.state.isLoggedIn)
-        if (this.state.isLoggedIn)
+        console.log('header is login = ', this.props.isLogin)
+        if(this.props.isLogin)
             return (
                 <header>
                     <nav className="navbar navbar-expand-lg navbar-dark primary-color">
@@ -62,7 +29,7 @@ class Header extends Component {
                                 <li className="nav-item active">
                                     <NavLink to="/" activeClassName="active" className="nav-link">Home</NavLink>
                                 </li>
-                                <li className={'nav-item ' + (this.state.isLoggedIn ? 'showmenu' : 'hidemenu')}>
+                                <li className={'nav-item ' + (this.props.isLogin ? 'showmenu' : 'hidemenu')}>
                                     <NavLink to="/report" activeClassName="active" className="nav-link">Report</NavLink>
                                 </li>
                                 {}
@@ -87,35 +54,36 @@ class Header extends Component {
                                     <span className="nav-link clink">Welcome User</span>
                                 </li>
                                 <li className="nav-item">
-                                    <span className="nav-link clink" role="button" onClick={() => this.handleLogout()}>Logout</span>
+                                    {/* <span className="nav-link clink" role="button" onClick={() => this.handleLogout()}>Logout</span> */}
+                                    <span className="nav-link clink" role="button" onClick={this.props.handleLogout}>Logout</span>
                                 </li>
+                                
                             </ul>
                         </div>
                     </nav>
                 </header>
-
             )
         else
             return null;
     }
 }
 
-const HeaderContainer = connect(
-    (storeState) => {
-        //console.log('hey sajal ', storeState.userReducer.isUserLoggedIn);
-        console.log(storeState);
+// const HeaderContainer = connect(
+//     (storeState) => {
+//         //console.log('hey sajal ', storeState.userReducer.isUserLoggedIn);
+//         console.log(storeState);
 
-        return {
-            user: storeState.user,
-        };
-    },
-    (dispatch) => {
-        return {
-            actions: bindActionCreators({
-                logoutSuccess
-            }, dispatch)
-        };
-    }
-)(Header);
+//         return {
+//             user: storeState.user,
+//         };
+//     },
+//     (dispatch) => {
+//         return {
+//             actions: bindActionCreators({
+//                 logoutSuccess
+//             }, dispatch)
+//         };
+//     }
+// )(Header);
 
-export default HeaderContainer;
+export default Header;

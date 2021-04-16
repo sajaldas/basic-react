@@ -3,7 +3,7 @@ const LOGOUT_SUCCESS = "logout_success"
 
 export const actionTypes = {
     LOGIN_SUCCESS,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
 }
 
 export function loginSuccess(payload){
@@ -13,7 +13,7 @@ export function loginSuccess(payload){
     }
 }
 
-export function logoutSuccess(payload){
+export function logoutSuccess(){
     return {
         type : LOGOUT_SUCCESS
     }

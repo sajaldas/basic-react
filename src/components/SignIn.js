@@ -56,7 +56,7 @@ class SignIn extends Component {
                 email : data.attributes.email
             }
             this.props.actions.loginSuccess(user);
-            this.props.history.push("/"); //send to report page
+            this.props.history.push("/"); //send to home or report page
         })
         .catch((err) => {
             console.log(err)
@@ -94,7 +94,6 @@ class SignIn extends Component {
 
 const SignInContainer = connect(
     (storeState) => {
-        //console.log('hey sajal ', storeState.userReducer.isUserLoggedIn);
         return {
             user: storeState.userReducer,
         };

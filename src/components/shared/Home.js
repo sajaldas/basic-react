@@ -18,7 +18,7 @@ class Home extends Component {
     authListener = async () => {
         try {
             //const response = await Auth.currentSession();
-            console.log('called');
+            console.log('home called');
             const user = await Auth.currentAuthenticatedUser();
             
         } catch (err) {
@@ -27,21 +27,10 @@ class Home extends Component {
         }
     }
 
-    handleLogout = async () =>{
-        console.log('logout called');
-        try {
-            await Auth.signOut({ global: true });
-            this.setState({isLoggedIn: false})
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
-    }
-
     render() {
         return (
             <div>
                 <div>Hello home</div>
-                {/* <div onClick={() => this.handleLogout()}>Logout</div> */}
             </div>
         )
     }

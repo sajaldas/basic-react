@@ -1,6 +1,11 @@
 import { actionTypes } from '../actions/user-actions'
 
-export default function userReducer(state = {}, action) {
+const initialState = {
+    user: {},
+    isUserLoggedIn: false
+  };
+
+export default function userReducer(state = initialState, action) {
     let { type, payload } = action;
 
     switch (type) {
@@ -11,10 +16,7 @@ export default function userReducer(state = {}, action) {
                 user: payload
             }
         case actionTypes.LOGOUT_SUCCESS:
-            return {
-                ...state,
-                isUserLoggedIn: false
-            }
+            return initialState
         default:
             return state
     }
