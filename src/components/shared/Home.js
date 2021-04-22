@@ -20,7 +20,7 @@ class Home extends Component {
             //const response = await Auth.currentSession();
             console.log('home called');
             const user = await Auth.currentAuthenticatedUser();
-            
+            console.log('user = ', user);
         } catch (err) {
             console.log(err);
             this.props.history.push("/signin");

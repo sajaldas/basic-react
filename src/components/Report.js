@@ -6,7 +6,7 @@ import MOCK_DATA from './../MOCK_DATA.json'
 import { COLUMNS } from './Columns';
 
 const FilterOption = ({filter, setFilter}) => {
-    console.log('set filter called')
+    //console.log('set filter called')
     return  (
     <div className="col-lg-4 col-xl-3 float-right mb-3">
         <input className="form-control" type="text" value={filter || ''}  placeholder="Search" aria-label="Search" onChange={e => setFilter(e.target.value)} />
@@ -70,7 +70,7 @@ const Table = ({
             setColumnOrder
         } = tableInstance;
 
-        console.log('tableInstance = ', tableInstance);
+        //console.log('tableInstance = ', tableInstance);
     
         const { pageIndex, pageSize, globalFilter } = state
         const [keyword, setkeyword] = React.useState('')
@@ -91,7 +91,7 @@ const Table = ({
             fetchDataFromAPI({ pageIndex, pageSize })
             else
             {
-                console.log('it should work here, pageIndex = ', pageIndex);
+                //console.log('it should work here, pageIndex = ', pageIndex);
                 gotoPage(pageIndex)
             }
             
@@ -161,8 +161,8 @@ const Table = ({
                     <li className="page-item"><span className="page-link" onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</span></li>
                     {
                         (() => {
-                            console.log('pageIndex = ', pageIndex);
-                            console.log('pageCount = ', pageCount);
+                            // console.log('pageIndex = ', pageIndex);
+                            // console.log('pageCount = ', pageCount);
                             var items= []
                             let start = pageIndex + 1;
                             let end = start + 4;

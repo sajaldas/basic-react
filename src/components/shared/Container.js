@@ -38,14 +38,14 @@ class Container extends Component
             }            
         } catch(err){
             console.log('err: ', err);
-            this.props.history.push("/signin");
+            //this.props.history.push("/signin");
         }  
     }
 
     //componentDidUpdate
 
     handleLogout = async () => {
-        //console.log('handle logout');
+        console.log('handle logout');
         try {
             await Auth.signOut({ global: true });
             this.setState({ isLogin: false })
@@ -62,23 +62,12 @@ class Container extends Component
             <>
             <Header isLogin={this.state.isLogin} handleLogout={this.handleLogout} />
             <div className="container-fluid app-container">   
-                {/* {this.state.isLogin ? 
-                <Switch>                                        
-                    <Route path="/" component={Home}></Route>
-                    <Route path="/report" component={Report}></Route>
-                    <Route path="/chart" component={Chart}></Route>                    
-                    <Route component={NotFound} />
-                </Switch> : 
                 <Switch>
-                    <Route path="/signin" component={SignIn}></Route>
-                    <Route path="/signup" component={SignUp}></Route>
-                </Switch>} */}
-                <Switch>                                        
-                    <Route path="/" component={Home}></Route>
                     <Route path="/report" component={Report}></Route>
-                    <Route path="/chart" component={Chart}></Route>   
+                    <Route path="/chart" component={Chart}></Route>
                     <Route path="/signin" component={SignIn}></Route>
-                    <Route path="/signup" component={SignUp}></Route>                 
+                    <Route path="/signup" component={SignUp}></Route>                   
+                    <Route exact path="/" component={Home}></Route>
                     <Route component={NotFound} />
                 </Switch>
             </div>
