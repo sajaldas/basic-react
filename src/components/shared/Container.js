@@ -15,42 +15,50 @@ import Chart from './../Chart'
 import {logoutSuccess} from '../../redux/actions/user-actions'
 import { Auth } from 'aws-amplify';
 
+import history from '../../history'
+
 
 class Container extends Component 
 {
     constructor(props)
     {        
         super(props)
-        console.log('container constructor');
         this.state= {
             isLogin: this.props.user.isUserLoggedIn
         }
     }
 
-    async componentDidMount() {
-        console.log('container mount called');
-        try{
-            const user = await Auth.currentAuthenticatedUser();
-            console.log('auth user = ', user);
-            if(user.username)
-            {
-                this.setState({isLogin:true})                
-            }            
-        } catch(err){
-            console.log('err: ', err);
-            //this.props.history.push("/signin");
-        }  
+    componentDidMount() {
+        this.authListener();  
     }
 
-    //componentDidUpdate
+    componentDidUpdate(prevProps, prevState){
+        // console.log('prevProps = ', prevProps.user.isUserLoggedIn)
+        // console.log('new prop = ', this.props.user.isUserLoggedIn)
+        if (prevProps.user.isUserLoggedIn !== this.props.user.isUserLoggedIn) 
+        {
+            this.setState({ isLogin: this.props.user.isUserLoggedIn })
+        }
+    }
+
+    authListener = async () => {
+        try {
+            const user = await Auth.currentAuthenticatedUser();
+            //console.log('user = ', user);
+            if(user)
+            this.setState({ isLogin: true })
+        } catch (err) {
+            console.log(err);
+            history.push('/signin');
+        }
+    }
 
     handleLogout = async () => {
-        console.log('handle logout');
         try {
             await Auth.signOut({ global: true });
             this.setState({ isLogin: false })
-            this.props.actions.logoutSuccess();
-            this.props.history.push("/signin");
+            this.props.actions.logoutSuccess();            
+            history.push('/signin');
         } catch (error) {
             console.log('error signing out: ', error);
         }
@@ -63,12 +71,12 @@ class Container extends Component
             <Header isLogin={this.state.isLogin} handleLogout={this.handleLogout} />
             <div className="container-fluid app-container">   
                 <Switch>
-                    <Route path="/report" component={Report}></Route>
-                    <Route path="/chart" component={Chart}></Route>
-                    <Route path="/signin" component={SignIn}></Route>
-                    <Route path="/signup" component={SignUp}></Route>                   
+                    <Route exact path="/report" component={Report}></Route>
+                    <Route exact path="/chart" component={Chart}></Route>
+                    <Route exact path="/signin" component={SignIn}></Route>
+                    <Route exact path="/signup" component={SignUp}></Route>                   
                     <Route exact path="/" component={Home}></Route>
-                    <Route component={NotFound} />
+                    <Route exact component={NotFound} />
                 </Switch>
             </div>
             <Footer />
@@ -79,7 +87,6 @@ class Container extends Component
 
 const WrapperContainer = connect(
     (storeState) => {
-        //console.log('all store available here ', storeState);
         return {
             user: storeState.user,
         };

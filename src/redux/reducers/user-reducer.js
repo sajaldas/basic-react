@@ -1,7 +1,7 @@
 import { actionTypes } from '../actions/user-actions'
 
 const initialState = {
-    user: {},
+    userDetail: {},
     isUserLoggedIn: false
   };
 
@@ -13,7 +13,7 @@ export default function userReducer(state = initialState, action) {
             return {
                 ...state,
                 isUserLoggedIn: true,
-                user: payload
+                userDetail: payload
             }
         case actionTypes.LOGOUT_SUCCESS:
             return initialState

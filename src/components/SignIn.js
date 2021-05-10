@@ -17,21 +17,6 @@ class SignIn extends Component {
         }        
     }
 
-    componentDidMount() {
-        this.authListener()
-    }
-
-    authListener = async () => {       
-        try {           
-            const user = await Auth.currentAuthenticatedUser();
-            if(user)
-            this.props.history.push("/");
-
-        } catch (err) {
-            console.log(err);            
-        }
-    }
-
     handleChange = (e) => {
         //console.log(e.target.id);
         this.setState({
@@ -41,15 +26,13 @@ class SignIn extends Component {
 
     handleFormSubmit = () => {
         const { user_email, user_pass } = this.state
-        // console.log('email = ', email)
-        // console.log('password = ', password)
 
         Auth.signIn({
             username: user_email,
             password: user_pass
         })
         .then((data) => {
-            console.log('after login data = ', data);
+            //console.log('after login data = ', data);
             const user = {
                 username : data.username,
                 //name : data.attributes.'custom:first_name +''+ data.attributes.custom:last_name,

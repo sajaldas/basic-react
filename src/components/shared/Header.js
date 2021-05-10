@@ -6,14 +6,10 @@ import { bindActionCreators } from 'redux'
 import { Auth } from 'aws-amplify';
 import { logoutSuccess } from '../../redux/actions/user-actions'
 
-class Header extends Component {
-
-    constructor(props) {
-        super(props)
-    }
-
+class Header extends Component 
+{
     render() {
-        console.log('header is login = ', this.props.isLogin)
+        //console.log('header is login = ', this.props.isLogin)
         if(this.props.isLogin)
             return (
                 <header>
@@ -67,23 +63,5 @@ class Header extends Component {
             return null;
     }
 }
-
-// const HeaderContainer = connect(
-//     (storeState) => {
-//         //console.log('hey sajal ', storeState.userReducer.isUserLoggedIn);
-//         console.log(storeState);
-
-//         return {
-//             user: storeState.user,
-//         };
-//     },
-//     (dispatch) => {
-//         return {
-//             actions: bindActionCreators({
-//                 logoutSuccess
-//             }, dispatch)
-//         };
-//     }
-// )(Header);
 
 export default Header;

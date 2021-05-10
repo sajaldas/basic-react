@@ -33,7 +33,7 @@ const Table = ({
         customFilter
     }) => {
 
-        console.log('------------ table component called ------------');
+        //console.log('------------ table component called ------------');
         
         const tableInstance = useTable ({
                 columns,
@@ -206,7 +206,7 @@ const Report = () => {
         pageIndex = (pageIndex === undefined) ? 0 : pageIndex
         try {        
             setLoading(true)
-            console.log('================ fetchDataFromAPI called =============')            
+            console.log('=== fetchDataFromAPI called ===')            
             const apiData = await axios.get("https://my.api.mockaroo.com/users.json?key=652173a0")
             // console.log('apiData = ', apiData)
             // console.log('pageSize 1 = ', pageSize)
@@ -226,7 +226,7 @@ const Report = () => {
     }
 
     const handleCustomFilter = ({key, pageSize}) => {
-        console.log('custom filter key = ', key);
+        //console.log('custom filter key = ', key);
         //console.log('pageSize 2 = ', pageSize)        
         
         const filteredData = alldata.filter( (srch) => {
@@ -235,7 +235,7 @@ const Report = () => {
             || srch.email.toLowerCase().includes(key.toLowerCase())
             || srch.country.toLowerCase().includes(key.toLowerCase())
         })
-        console.log('filteredData = ', filteredData);             
+        //console.log('filteredData = ', filteredData);             
         const startRow = pageSize * pageIndex
         const endRow = startRow + pageSize            
         const sliceData = filteredData.slice(startRow, endRow)

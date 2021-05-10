@@ -85,7 +85,7 @@ class Chart extends Component {
     async componentDidMount() {
         const chardData = await axios.get("https://my.api.mockaroo.com/rainfall.json?key=652173a0")
         // console.log('chardData = ', chardData);
-        // if(chardData.data)
+        if(chardData.data)
         this.setState({ lineData: chardData.data })
     }
 
